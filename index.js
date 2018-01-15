@@ -6,12 +6,21 @@ const schema = require('./schema')
 require('./db/setup')
 
 const app = express()
-const PORT = 3000
+const PORT = 5678
 
 app.use(
   '/graphql',
   bodyParser.json(),
-  graphqlExpress({ schema })
+  graphqlExpress({
+    schema,
+    formatError: (error) => {
+      return {
+        code: 'A43',
+        name: error.name,
+        message: error.message
+      }
+    }
+  })
   )
 
 app.use(
