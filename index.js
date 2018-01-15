@@ -6,7 +6,7 @@ const schema = require('./schema')
 require('./db/setup')
 
 const app = express()
-const PORT = 5678
+const PORT = 3000
 
 app.use(
   '/graphql',
